@@ -7,7 +7,29 @@
 </head>
 <body><div class="container"><h1>ImageVault</h1><button onclick="mostrarOcultar()">
 Ocultar mensaje
-</button><button onclick="mostrarLeer()">
+<div id="ocultar" style="display:none">
+
+<h2>Ocultar mensaje</h2>
+
+<input type="file" id="imagen" accept="image/*">
+
+<textarea id="mensaje"
+placeholder="Escribe tu mensaje"></textarea>
+
+<input
+type="password"
+id="password"
+placeholder="Contraseña opcional">
+
+<button onclick="guardarMensaje()">
+Generar imagen
+</button>
+
+<img
+id="preview"
+style="width:100%;margin-top:15px;display:none;">
+
+</div>
 Leer mensaje
 </button><div id="ocultar" style="display:none"><h2>Ocultar mensaje</h2><input type="file" id="imagen"><textarea id="mensaje"
 placeholder="Escribe tu mensaje">
@@ -15,5 +37,9 @@ placeholder="Escribe tu mensaje">
 Generar imagen
 </button></div><div id="leer" style="display:none"><h2>Leer mensaje</h2><input type="file" id="imagenLeer"><button onclick="leerMensaje()">
 Leer contenido
-</button><p id="resultado"></p></div></div><script src="js/app.js"></script></body>
+</button><p id="resultado"></p></div></div><script src="js/app.js"></script>
+<script src="js/crypto.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+<script src="js/app.js"></script>
+</body>
 </html>

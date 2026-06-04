@@ -1,34 +1,49 @@
 function mostrarOcultar(){
-document.getElementById("ocultar").style.display="block";
-document.getElementById("leer").style.display="none";
+    document.getElementById("ocultar").style.display="block";
+    document.getElementById("leer").style.display="none";
 }
 
 function mostrarLeer(){
-document.getElementById("leer").style.display="block";
-document.getElementById("ocultar").style.display="none";
+    document.getElementById("leer").style.display="block";
+    document.getElementById("ocultar").style.display="none";
 }
 
 function guardarMensaje(){
 
-const mensaje =
-document.getElementById("mensaje").value;
+    const file =
+    document.getElementById("imagen").files[0];
 
-localStorage.setItem(
-"mensajeOculto",
-mensaje
-);
+    if(!file){
+        alert("Selecciona una imagen");
+        return;
+    }
 
-alert("Mensaje guardado");
-}
+    const mensaje =
+    document.getElementById("mensaje").value;
 
-function leerMensaje(){
+    const password =
+    document.getElementById("password").value || "imagevault";
 
-const mensaje =
-localStorage.getItem(
-"mensajeOculto"
-);
+    const lector = new FileReader();
 
-document.getElementById(
-"resultado"
-).innerText = mensaje || "No existe mensaje";
+    lector.onload = function(e){
+
+        localStorage.setItem(
+            "mensajeOculto",
+            cifrarMensaje(
+                mensaje,
+                password
+            )
+        );
+
+        document.getElementById("preview").src =
+        e.target.result;
+
+        document.getElementById("preview").style.display =
+        "block";
+
+        alert("Mensaje protegido");
+    };
+
+    lector.readAsDataURL(file);
 }
