@@ -1,43 +1,34 @@
-cargar();
-
-function guardar(){
-
-let nota=document.getElementById("nota").value;
-
-if(nota==""){
-return;
+function mostrarOcultar(){
+document.getElementById("ocultar").style.display="block";
+document.getElementById("leer").style.display="none";
 }
 
-let notas=
-JSON.parse(localStorage.getItem("notas"))
-|| [];
+function mostrarLeer(){
+document.getElementById("leer").style.display="block";
+document.getElementById("ocultar").style.display="none";
+}
 
-notas.push(nota);
+function guardarMensaje(){
+
+const mensaje =
+document.getElementById("mensaje").value;
 
 localStorage.setItem(
-"notas",
-JSON.stringify(notas)
+"mensajeOculto",
+mensaje
 );
 
-document.getElementById("nota").value="";
-
-cargar();
+alert("Mensaje guardado");
 }
 
-function cargar(){
+function leerMensaje(){
 
-let notas=
-JSON.parse(localStorage.getItem("notas"))
-|| [];
+const mensaje =
+localStorage.getItem(
+"mensajeOculto"
+);
 
-let html="";
-
-for(let n of notas){
-
-html += "<li>"+n+"</li>";
-
-}
-
-document.getElementById("lista").innerHTML=html;
-
+document.getElementById(
+"resultado"
+).innerText = mensaje || "No existe mensaje";
 }
