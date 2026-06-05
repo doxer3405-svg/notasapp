@@ -1,45 +1,92 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ImageVault</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body><div class="container"><h1>ImageVault</h1><button onclick="mostrarOcultar()">
-Ocultar mensaje
-<div id="ocultar" style="display:none">
 
-<h2>Ocultar mensaje</h2>
+<body>
 
-<input type="file" id="imagen" accept="image/*">
+<div class="container">
 
-<textarea id="mensaje"
-placeholder="Escribe tu mensaje"></textarea>
+    <img src="img/logo.png" class="logo">
 
-<input
-type="password"
-id="password"
-placeholder="Contraseña opcional">
+    <h1>ImageVault</h1>
 
-<button onclick="guardarMensaje()">
-Generar imagen
-</button>
+    <p class="subtitulo">
+        Protege y recupera información oculta en imágenes
+    </p>
 
-<img
-id="preview"
-style="width:100%;margin-top:15px;display:none;">
+    <button onclick="mostrarPantalla('ocultar')">
+        🔒 Ocultar mensaje
+    </button>
+
+    <button onclick="mostrarPantalla('leer')">
+        📸 Escanear imagen
+    </button>
+
+    <button onclick="mostrarPantalla('historial')">
+        🕘 Historial
+    </button>
 
 </div>
-Leer mensaje
-</button><div id="ocultar" style="display:none"><h2>Ocultar mensaje</h2><input type="file" id="imagen"><textarea id="mensaje"
-placeholder="Escribe tu mensaje">
-</textarea><button onclick="guardarMensaje()">
-Generar imagen
-</button></div><div id="leer" style="display:none"><h2>Leer mensaje</h2><input type="file" id="imagenLeer"><button onclick="leerMensaje()">
-Leer contenido
-</button><p id="resultado"></p></div></div><script src="js/app.js"></script>
-<script src="js/crypto.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<div id="ocultar" class="pantalla">
+
+    <h2>Ocultar mensaje</h2>
+
+    <input type="file" id="imagen" accept="image/*">
+
+    <textarea
+    id="mensaje"
+    placeholder="Escribe tu mensaje"></textarea>
+
+    <input
+    type="password"
+    id="password"
+    placeholder="Contraseña opcional">
+
+    <button onclick="guardarMensaje()">
+        Generar imagen protegida
+    </button>
+
+    <button onclick="volverInicio()">
+        Volver
+    </button>
+
+</div>
+
+<div id="leer" class="pantalla">
+
+    <h2>Escanear imagen</h2>
+
+    <input type="file" accept="image/*">
+
+    <button>
+        Leer mensaje
+    </button>
+
+    <button onclick="volverInicio()">
+        Volver
+    </button>
+
+</div>
+
+<div id="historial" class="pantalla">
+
+    <h2>Historial</h2>
+
+    <p>Próximamente</p>
+
+    <button onclick="volverInicio()">
+        Volver
+    </button>
+
+</div>
+
 <script src="js/app.js"></script>
+
 </body>
 </html>
